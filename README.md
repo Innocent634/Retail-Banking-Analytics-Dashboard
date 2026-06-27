@@ -29,6 +29,9 @@ The dashboards answer key banking questions such as:
 • Which regions have the highest concentration of risky loans?
 
 ## Dataset
+[Download File .xlsx](https://github.com/Innocent634/retail-banking-analytics-dashboard/raw/refs/heads/main/Banking%20Transactions.xlsx)
+
+[Download File .pbix](https://github.com/Innocent634/retail-banking-analytics-dashboard/raw/refs/heads/main/NGC%20Data%20Analysis%20Boot%20Camp%20Final%20Project.pbix)
 
 The dataset contains information on:
 
@@ -41,7 +44,7 @@ The dataset contains information on:
 - Regions
 - Banking Channels
 
-  ## Data Preparation
+## Data Preparation
 
 Power Query was used to:
 
@@ -71,13 +74,13 @@ Dimension Tables
 ## Dashboards
 
 # Retail Banking Transactions Dashboard
-
+<img width="999" height="562" alt="Retail Banking Transactions Dashboard" src="https://github.com/user-attachments/assets/06d4f60b-19b5-459d-b3d5-8d96dc06f014" />
 
 # Loan Portfolio & Credit Risk Dashboard
-
+<img width="1000" height="562" alt="Loan Portfolio and credit Risk" src="https://github.com/user-attachments/assets/03edcbe2-25f0-4200-80d1-4f9110f4ccad" />
 
 # Customer Value & Exposure Dashboard
-
+<img width="1007" height="551" alt="Customer Value and Exposure" src="https://github.com/user-attachments/assets/f1f21c6b-36cb-442e-8b8b-a3d684956ec6" />
 
 ## DAX Measures
 
@@ -151,3 +154,10 @@ Improve customer segmentation using predictive analytics.
 - Git
 - GitHub
   
+Contact
+
+[Email](egbeinnocent634@gmail.com)
+
+[LinkedIn](www.linkedin.com/in/innocent-egbe-016a1015a)
+
+[Chat on Whatsapp](https://wa.me/2348135342038)
