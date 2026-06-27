@@ -1,4 +1,4 @@
-# Retail-Banking-Analytics-Dashboard
+# Retail Banking Analytics Dashboard Suite: Transactions, Loan Portfolio, Customer Value & Credit Risk Assessment
 ## Project Overview
 
 This project demonstrates an end-to-end Power BI solution for analyzing retail banking operations.
