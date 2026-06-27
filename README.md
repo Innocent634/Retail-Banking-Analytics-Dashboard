@@ -33,43 +33,14 @@ The dashboards answer key banking questions such as:
 
 [Download File .pbix](https://github.com/Innocent634/retail-banking-analytics-dashboard/raw/refs/heads/main/NGC%20Data%20Analysis%20Boot%20Camp%20Final%20Project.pbix)
 
-The dataset contains information on:
-
-- Customer Demographics
-- Banking Transactions
-- Loan Portfolio
-- Customer Income
-- Credit Risk Ratings
-- Branch Information
-- Regions
-- Banking Channels
-
 ## Data Preparation
 
-Power Query was used to:
-
-- Remove duplicates
-- Correct data types
-- Handle missing values
-- Create calculated columns
-- Standardize text values
-- Create date hierarchy
+Retail banking transactions and Banking loan portfolio raw data tables were used.
+Additional columns and measures such as Loan Term (years), Total interest accrued, customer income and exposure band were calculated
 
 ## Data Model
 
-The project follows a star schema consisting of:
-
-Fact Tables
-
-- Banking Transactions
-- Loan Portfolio
-
-Dimension Tables
-
-- Customer
-- Date
-- Branch
-- Region
+Relationship was established between Banking transactions and loan portfolio using customer ID
 
 ## Dashboards
 
@@ -84,16 +55,33 @@ Dimension Tables
 
 ## DAX Measures
 
-Total Loan Portfolio =
-SUM(Loan Portfolio[Loan Amount])
+Total Loan Portfolio = SUM(Loan Portfolio[Loan Amount])
 
-Average Loan Size =
-AVERAGE(Loan Portfolio[Loan Amount])
+Average Loan Size = AVERAGE(Loan Portfolio[Loan Amount])
 
-Exposure at Risk =
-CALCULATE(
-SUM(Loan Portfolio[Loan Amount]),
-Loan Portfolio[Risk Rating]="High")
+Expected Monthly Payments = DIVIDE('Banking loans portfolio'[Total Payable Repayment],'Banking loans portfolio'[Loan_Term_Months])
+
+Exposure at Risk = CALCULATE(SUM(Loan Portfolio[Loan Amount]), Loan Portfolio[Risk Rating]="High")
+
+Customer Exposure Band = SWITCH(TRUE(), 'Banking loans portfolio'[Loan_Amount] < 1000000, "Low Exposure", 'Banking loans portfolio'[Loan_Amount] < 2000000, "Moderate Exposure", "High Exposure")
+
+Customer Income Band = SWITCH(TRUE(), 'Banking loans portfolio'[Monthly_Income] < 200000, "Low Income", 'Banking loans portfolio'[Monthly_Income] < 500000, "Middle Income", "High Income")
+
+Debt to Income ratio = DIVIDE('Banking loans portfolio'[Loan_Amount], 'Banking loans portfolio'[Monthly_Income])
+
+Debt to Income Category = SWITCH(TRUE(), 'Banking loans portfolio'[Debt to Income ratio] <20, "Acceptable", 'Banking loans portfolio'[Debt to Income ratio] <30, "Manageable", "Unacceptable")
+
+Loan Term (Years) = 'Banking loans portfolio'[Loan_Term_Months]/12
+
+Total Customers = DISTINCTCOUNT('Banking loans portfolio'[Customer_ID])
+
+Total Interest Accrued = 'Banking loans portfolio'[Loan_Amount] * 'Banking loans portfolio'[Interest_Rate] * 'Banking loans portfolio'[Loan Term (Years)]/100
+
+Total Payable Repayment = 'Banking loans portfolio'[Loan_Amount] + 'Banking loans portfolio'[Total Interest Accrued]
+
+Total Transaction = COUNT('Retail banking transactions'[Transaction_ID])
+
+Average Transaction Value = AVERAGEA('Retail banking transactions'[Transaction_Amount])
 
 ## Key Insights
 
@@ -111,15 +99,15 @@ Loan Portfolio[Risk Rating]="High")
 
 ## Recommendations
 
-Increase monitoring of high-risk borrowers.
+- Increase monitoring of high-risk borrowers.
 
-Expand digital banking services.
+- Expand digital banking services.
 
-Develop retention programs for premium customers.
+- Develop retention programs for premium customers.
 
-Review lending policies in high-risk regions.
+- Review lending policies in high-risk regions.
 
-Improve customer segmentation using predictive analytics.
+- Improve customer segmentation using predictive analytics.
 
 ## Skills Demonstrated
 
